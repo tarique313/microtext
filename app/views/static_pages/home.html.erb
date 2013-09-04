@@ -1,11 +1,8 @@
-<%provide(:title,'Home')%>
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title>MicroText | <%= yield(:title) %></title>
-</head>
-<body> -->
-<h1>MicroText</h1>
-<p>This is the home page for MicroText</p>
-<!-- </body>
-</html> -->
+<div class="center hero-unit">
+<h1>Welcome to the MicroText</h1>
+<p>Welcome to <a href="http://microtext.herokuapp.com">MicroText</a></p>
+
+<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary "%>
+<%= link_to "Sign in", '#', class: "btn btn-large btn-primary1 "%>
+
+</div>
