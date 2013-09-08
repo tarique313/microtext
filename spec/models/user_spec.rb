@@ -11,7 +11,8 @@ describe User do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }  
-  it { should respond_to(:authentication) }
+  it { should respond_to(:remember_token)}
+  it { should respond_to(:authenticate) }
   it {should be_valid}
 
 	describe "when name is not present" do
@@ -88,11 +89,18 @@ describe "when email address is already taken" do
     end
 
     describe "with invalid password" do
-      let(:user_for_invalid_password) { found_user.authenticate("invalid") }
+      let(:user_for_invalid_password) { found_user.authenticate("Invalid") }
 
       it { should_not == user_for_invalid_password }
       specify { user_for_invalid_password.should be_false }
     end
   end
+
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token){ should_not be_blank}
+    it "should have a nonblank remembertoken"  do
+      subject.remember_token.should_not_be_blank
+    end
+  end
 end
- 	
