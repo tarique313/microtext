@@ -65,22 +65,23 @@ p {
 
 /* header */
 
+
+
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
   color: white;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: white;
+    color: gray;
     text-decoration: none;
   }
 }
-
 /* footer */
 
 footer {
@@ -116,11 +117,15 @@ footer {
   } 
 
   .navbar .nav > li > a {
-  color:#FFFFFF;
-  float:none;
+  color:white;
+  float: none;
   padding:10px 15px;
   text-decoration:none;
-  text-shadow:gray 0 1px 0;
+  text-shadow: none;
+&:hover {
+    color: gray;
+    text-decoration: none;
+  }
 }
 
  .hero-unit {
