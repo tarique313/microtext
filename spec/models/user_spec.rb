@@ -30,6 +30,7 @@ describe User do
 		before  { @user.name = "a" * 51 }
 		it { should_not be_valid }
 	end
+  
 	describe "when email format is invalid" do
     it "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.
@@ -99,8 +100,8 @@ describe "when email address is already taken" do
   describe "remember token" do
     before { @user.save }
     its(:remember_token){ should_not be_blank}
-    it "should have a nonblank remembertoken"  do
-      subject.remember_token.should_not_be_blank
-    end
+    # it "should have a nonblank remembertoken"  do
+    #   subject.remember_token.should_not_be_blank
+    # end
   end
 end
