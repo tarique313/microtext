@@ -18,7 +18,7 @@
       <% @microposts.each do |micropost| %>
         <ol class="microposts">
         <%#= render @microposts %>
-          <%= micropost.content %>
+          <%= micropost.content %><br/>
           <% if current_user.following?(@user) %>
             <%= render :partial=> "comment_form", :locals => {:micropost_id => micropost.id} %>
           <% end %>  
@@ -34,3 +34,11 @@
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function(){
+    $("#comment_form").on('click', function(){
+      $(".comment").toggle("slow");
+    });
+  });
+</script>

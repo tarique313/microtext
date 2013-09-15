@@ -1,4 +1,5 @@
-<div class="comment">
+<%= link_to "Comment", "javascript:void(0);", :id => "comment_form"%>
+<div class="comment" style="display:none">
 	<%= form_tag "create_comment", :remote => true do %>
 		<%= text_area_tag :comment, nil, :cols=> 20 %>
 		<%= hidden_field_tag :micropost_id, micropost_id %>
