@@ -1,0 +1,8 @@
+<div class="comment">
+	<%= form_tag "create_comment", :remote => true do %>
+		<%= text_area_tag :comment, nil, :cols=> 20 %>
+		<%= hidden_field_tag :micropost_id, micropost_id %>
+		<br/>
+		<%= submit_tag "Comment", :class => "btn btn-success" %>
+	<% end %>
+</div>

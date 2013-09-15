@@ -15,9 +15,21 @@
     <%= render 'follow_form' if signed_in? %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
+      <% @microposts.each do |micropost| %>
+        <ol class="microposts">
+        <%#= render @microposts %>
+          <%= micropost.content %>
+          <% if current_user.following?(@user) %>
+            <%= render :partial=> "comment_form", :locals => {:micropost_id => micropost.id} %>
+          <% end %>  
+          <% unless micropost.comments.blank? %>
+            <% micropost.comments.each do |comment| %>
+              <%= render :partial => "comments", :locals => {:comment => comment}  %>
+            <% end %>
+          <% end %>  
+        </ol>
+      <% end %>
+
       <%= will_paginate @microposts %>
     <% end %>
   </div>

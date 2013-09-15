@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
+before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers, :create_comment]
 before_filter :correct_user, only: [:edit, :update]
 before_filter :admin_user, only: :destroy
 
@@ -63,6 +63,30 @@ before_filter :admin_user, only: :destroy
     render 'show_follow'
   end
 
+  def create_comment
+    logger.debug "===#{params.inspect}"
+    logger.debug "===#{current_user.inspect}"
+      
+    if current_user.nil?
+        redirect_to root_url, :notice => "Please login to comment"
+        return
+    else
+      comment = Comment.new
+      comment.content = params[:comment]
+      comment.micropost_id = params[:micropost_id]
+      comment.username = current_user.name
+      if comment.save
+        respond_to do |format|
+          format.js
+        end
+      else
+        render text: comment.errors.to_json
+        return
+      end
+    end
+    
+  end
+
 
 private
 
@@ -75,6 +99,8 @@ end
 def admin_user
   redirect_to root_path unless current_user.admin?
 end
+
+
 
 end
  
