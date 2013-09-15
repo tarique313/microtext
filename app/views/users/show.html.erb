@@ -37,8 +37,9 @@
 
 <script type="text/javascript">
   $(function(){
-    $("#comment_form").on('click', function(){
-      $(".comment").toggle("slow");
+    $(".comment_form").on('click', function(){
+      var div_no = this.id;
+      $("."+ div_no).toggle("slow");
     });
   });
 </script>
