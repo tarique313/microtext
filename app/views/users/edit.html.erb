@@ -16,9 +16,12 @@
       <%= f.label :password_confirmation, "Confirm Password" %>
       <%= f.password_field :password_confirmation %>
 
+      <%= f.label :user_avatar %>
+      <%= f.file_field :user_avatar %>
+
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
-    <%= gravatar_for @user%>
-    <a href="http://gravatar.com/emails">Change</a>
+    <%= image_tag(@user.user_avatar.url, :size => "60x60") if @user.user_avatar.present? %>
+    <!-- <a href="http://gravatar.com/emails">Change</a> -->
   </div>
 </div>

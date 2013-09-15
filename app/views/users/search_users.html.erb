@@ -7,7 +7,7 @@
 	<ul>
 		<% @users.each do |user| %>
 			<li>
-			<%= gravatar_for user, size: 52  %>
+			<%= image_tag(user.user_avatar.url,:size => "40x40") if user.user_avatar.present?  %>
 			<%= link_to user.name, user_path(user.id) %>
 			</li>
 			<hr/>
