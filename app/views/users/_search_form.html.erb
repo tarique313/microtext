@@ -1,0 +1,7 @@
+<div class="search">
+	<%= form_tag search_path do %>
+		<%= label_tag "search your friends: " %>
+		<%= text_field_tag :username %>
+		<%= submit_tag "Search", :class => "btn btn-info" %>
+	<% end %>
+</div>

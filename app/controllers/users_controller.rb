@@ -87,6 +87,14 @@ before_filter :admin_user, only: :destroy
     
   end
 
+  def search_users
+    @users = User.where('name LIKE ?', "%#{params[:username]}%").paginate(page: params[:page]) if params[:username].present?
+    @notice = "please enter a username" unless params[:username].present?
+    respond_to do |format|
+      format.html
+    end
+  end
+
 
 private
 
