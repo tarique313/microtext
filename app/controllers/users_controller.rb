@@ -103,7 +103,7 @@ before_filter :admin_user, only: :destroy
         tmp_followers = follower.followers
         unless tmp_followers.blank?
           tmp_recommends = tmp_followers.collect{|follower| follower.id}
-          recommended_friends.push(tmp_followers)
+          @recommended_friends.push(tmp_followers)
         end
       end
     end
