@@ -22,6 +22,7 @@ Microtext::Application.routes.draw do
   match '/contact', to: 'static_pages#contact'
 
   match '/search',  to: 'users#search_users'
+  match '/recommended_friends', to: 'users#recommended_friends'
 
 
 

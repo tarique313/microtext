@@ -1,0 +1,8 @@
+<% unless @recomended_friends.nil? %>
+	<% @recomended_friends.each do |friend| %>
+		<%= link_to User.find(friend).name, user_path(friend) %>
+		<hr/>
+	<% end %>
+<% else %>
+	 <p>You dont have any recommended friend Yet</p>
+<% end %>

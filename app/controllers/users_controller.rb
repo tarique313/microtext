@@ -95,6 +95,21 @@ before_filter :admin_user, only: :destroy
     end
   end
 
+  def recommended_friends
+    followers = current_user.followers
+    unless followers.blank?
+      @recommended_friends = []
+      followers.each do |follower|
+        tmp_followers = follower.followers
+        unless tmp_followers.blank?
+          tmp_recommends = tmp_followers.collect{|follower| follower.id}
+          recommended_friends.push(tmp_followers)
+        end
+        @recommended_friends.flatten!
+      end
+    end
+  end
+
 
 private
 
@@ -107,8 +122,6 @@ end
 def admin_user
   redirect_to root_path unless current_user.admin?
 end
-
-
 
 end
  

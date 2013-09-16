@@ -1,4 +1,6 @@
+<% unless @users.nil? || @users.count.eql?(0) %>
 <p class="alert"><%= @notice unless @notice.nil? %></p>
+<% end %>
 <%= render :partial => "search_form" %>
 <% if @users.nil? %>
 	<h3>No user found</h3>
