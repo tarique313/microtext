@@ -105,9 +105,9 @@ before_filter :admin_user, only: :destroy
           tmp_recommends = tmp_followers.collect{|follower| follower.id}
           recommended_friends.push(tmp_followers)
         end
-        @recommended_friends.flatten!
       end
     end
+    @recommended_friends.flatten!
   end
 
 
