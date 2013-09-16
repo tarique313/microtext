@@ -1,5 +1,7 @@
-<% unless @recomended_friends.nil? %>
-	<% @recomended_friends.each do |friend| %>
+
+<% unless @recommended_friends.nil? %>
+	<% @recommended_friends.each do |friend| %>
+		<%= image_tag(User.find(friend).user_avatar.url) if User.find(friend).user_avatar.present? %>
 		<%= link_to User.find(friend).name, user_path(friend) %>
 		<hr/>
 	<% end %>
