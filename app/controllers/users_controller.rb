@@ -99,7 +99,7 @@ before_filter :admin_user, only: :destroy
     followers = current_user.followers
 
     unless followers.blank?
-      followers_id_collection = followers.collect{|follower| follower.id}
+      followers_id_collection = followers.collect{ |follower| follower.id}
       @recommended_friends = []
       followers.each do |follower|
         tmp_followers = follower.followers
@@ -108,9 +108,9 @@ before_filter :admin_user, only: :destroy
           @recommended_friends.push(tmp_followers)
         end
       end
+      @recommended_friends = @recommended_friends.flatten! - followers_id_collection
+      @recommended_friends = @recommended_friends.sample(3)
     end
-    @recommended_friends = @recommended_friends.flatten! - followers_id_collection
-    @recommended_friends = @recommended_friends.sample(3)
   end
 
 
