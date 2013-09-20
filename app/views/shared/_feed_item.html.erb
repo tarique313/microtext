@@ -7,9 +7,10 @@
   <span class="timestamp">
     Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
   </span>
-  <% if current_user?(feed_item.user) %>
-    <%= link_to "delete", feed_item, method: :delete,
+  <div id="butn"><button class="btn btn-small" type="button"><% if current_user?(feed_item.user) %>
+    <%= link_to "Delete",  feed_item, method: :delete,
                                      data: { confirm: "You sure?" },
-                                     title: feed_item.content %>
+                                     title: feed_item.content %></button>
+  <button class="btn btn-small" type="button"><%= link_to "Show comments"%></button></div>
   <% end %>
 </li>
