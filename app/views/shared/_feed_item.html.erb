@@ -12,6 +12,6 @@
     <%= link_to "Delete",  feed_item, method: :delete,
                                      data: { confirm: "You sure?" },
                                      title: feed_item.content, :class => "btn btn-success" %>
-  <%= link_to "Show comments",nil, :class => "btn btn-success" %></div>
+  <%= link_to "Show comments",user_path(current_user), :class => "btn btn-success" %></div>
   <% end %>
 </li>
