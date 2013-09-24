@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
   before_filter :signed_in_user
   before_filter :correct_user,   only: :destroy
-
+  #User.paginate :page => params[:page], :per_page => 10, :order => 'name ASC'User.paginate :page => params[:page], :per_page => 10, :order => 'name ASC'
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
@@ -17,6 +17,9 @@ class MicropostsController < ApplicationController
     @micropost.destroy
     redirect_to root_path
   end
+
+  
+
 
   private
 

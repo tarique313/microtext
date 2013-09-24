@@ -9,6 +9,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
 gem 'rails-i18n', '~> 3.0.0.pre'
 gem 'carrierwave'
+gem 'contact_us', '~> 0.4.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

@@ -7,6 +7,9 @@ Microtext::Application.routes.draw do
       get :following, :followers
     end
   end
+  resources :inquiries, :only => [:new, :create] do
+  get 'thank_you', :on => :collection
+end
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
@@ -20,9 +23,11 @@ Microtext::Application.routes.draw do
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
-
+ # match '/contact', to: 'contact_us/contacts#new'
   match '/search',  to: 'users#search_users'
   match '/recommended_friends', to: 'users#recommended_friends'
+  match '/getting_started', to: 'static_pages#getting_started'
+  match '/signing_up', to: 'static_pages#signing_up'
 
 
 

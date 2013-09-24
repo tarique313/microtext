@@ -16,4 +16,10 @@ end
 
   def contact
   end
+
+  def getting_started
+  end
+
+  def signing_up
+  end
 end
