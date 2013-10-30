@@ -176,7 +176,7 @@ describe User do
 
       before do
         @user.follow!(followed_user)
-        3.times { followed_user.microposts.create!(content: "Lorem ipsum") }
+        3.times { followed_user.microposts.create!(content: "Babu Ahmed") }
       end
 
       its(:feed) { should include(newer_micropost) }

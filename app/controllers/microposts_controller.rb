@@ -18,10 +18,7 @@ class MicropostsController < ApplicationController
     redirect_to root_path
   end
 
-  
-
-
-  private
+private
 
     def correct_user
       @micropost = current_user.microposts.find_by_id(params[:id])
@@ -33,31 +30,4 @@ end
 
 
 
-
-# class MicropostsController < ApplicationController
-
-# before_filter :signed_in_user
-# before_filter :correct_user, only: :destroy
-
-# 	def create
-# 		@micropost = current_user.microposts.build(params[:micropost])
-# 		if @micropost.save
-# 			flash[:success] = "Microtext created!"
-# 			redirect_to root_path
-# 		else
-# 			@feed_items = []
-# 			render 'static_pages/home'
-# 		end
-# 	end
-
-# 	def destroy
-
-# 	end
-
-# 	private 
-# 	def correct_user
-# 		@micropost = current_user.microposts.find_by
-# 	end
-
-# end
 

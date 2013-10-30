@@ -16,7 +16,7 @@
     <% if @user.microposts.any? %>
       <h3>Microtexts (<%= @user.microposts.count %>)</h3>
       <% @microposts.each do |micropost| %>
-        <ul class="microposts">
+        <li class="microposts">
         <%#= render @microposts %>
          <%= micropost.content %><br/>
           <% if current_user.following?(@user) %>
@@ -27,7 +27,8 @@
               <%= render :partial => "comments", :locals => {:comment => comment}  %>
             <% end %>
           <% end %>  
-        </ul>
+        </li>
+        <hr />
       <% end %>
 
       <%= will_paginate @microposts %>

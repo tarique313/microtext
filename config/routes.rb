@@ -28,8 +28,9 @@ end
   match '/recommended_friends', to: 'users#recommended_friends'
   match '/getting_started', to: 'static_pages#getting_started'
   match '/signing_up', to: 'static_pages#signing_up'
+  match '/post_microtext', to: 'static_pages#post_microtext'
 
-
+end
 
 
 # Microtext::Application.routes.draw do
@@ -111,4 +112,4 @@ end
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
-end
+
