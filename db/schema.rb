@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130915183900) do
+ActiveRecord::Schema.define(:version => 20131230124626) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -21,11 +21,32 @@ ActiveRecord::Schema.define(:version => 20130915183900) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "messages", :force => true do |t|
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "user_id"
+    t.string   "ancestry"
+    t.string   "recipient_ids"
+    t.datetime "sent_at"
+    t.datetime "received_at"
+    t.datetime "read_at"
+    t.datetime "trashed_at"
+    t.datetime "deleted_at"
+    t.boolean  "editable"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "messages", ["ancestry"], :name => "index_messages_on_ancestry"
+  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
+
   create_table "microposts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "ups"
+    t.integer  "downs"
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"

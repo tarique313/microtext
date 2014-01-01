@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
-  
+  has_many :messages, class_name: 'Message', foreign_key: 'user_id'
   before_save { |user| user.email = user.email.downcase }
   before_save :create_remember_token 
 
@@ -39,6 +39,26 @@ class User < ActiveRecord::Base
     microposts.where("user_id = ?", id)
   end
   
+  def full_name
+    return "#{self.first_name} #{self.last_name}"
+  end
+
+  def prefix
+    try(:full_name) || email
+  end
+
+  def message_title
+    "#{prefix} <#{email}>"
+  end
+
+  def to_s
+    full_name
+  end
+
+  def mailbox
+    Mailbox.new(self)
+  end
+
   private
   def create_remember_token
   	self.remember_token = SecureRandom.urlsafe_base64
