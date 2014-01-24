@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
+  has_many :messages, class_name: 'Message', foreign_key: 'user_id',
+ :order => "messages.created_at DESC",
+ :conditions => ["messages.recepient_deleted = ?", false]
   
   before_save { |user| user.email = user.email.downcase }
   before_save :create_remember_token 
@@ -38,6 +41,27 @@ class User < ActiveRecord::Base
     # self.microposts
     microposts.where("user_id = ?", id)
   end
+
+  def message_title
+    "#{prefix} <#{email}>"
+  end
+
+  def to_s
+    full_name
+  end
+
+  def mailbox
+    Mailbox.new(self)
+  end
+
+  def unread_messages?
+ unread_message_count > 0 ? true : false
+ end
+ 
+# Returns the number of unread messages for this user
+ def unread_message_count
+ eval 'messages.count(:conditions => ["recepient_id = ? AND read_at IS NULL", self.beamer_id])'
+ end
   
   private
   def create_remember_token

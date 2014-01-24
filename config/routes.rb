@@ -1,4 +1,15 @@
 Microtext::Application.routes.draw do
+  
+  resources :messages do
+    collection do
+      get 'compose', :to=>'messages#new', :as=>:compose
+      get 'index', :to=> 'messages#index', :as=> :index
+      get 'sent', :to=> 'messages#sent', :as=> :sent
+      post 'reply', :to=> 'messages#reply', :as=> :reply
+      post 'trash', :to=> 'messages#trash', :as=> :trash
+    end
+  end
+
   resources :users do
     collection do 
       post :create_comment
@@ -35,6 +46,8 @@ end
 
 # Microtext::Application.routes.draw do
  
+
+
 #  # resources :users
 #  resources :users do
 #     member do
