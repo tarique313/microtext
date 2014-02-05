@@ -23,6 +23,6 @@ ContactUs.setup do |config|
   # Example:
   # config.form_gem = 'formtastic
   config.form_gem = nil
-config.success_redirect = '/contact-success'
+# config.success_redirect = '/contact-success'
 config.form_gem = 'formtastic'
 end
