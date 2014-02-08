@@ -15,6 +15,25 @@ gem 'haml','~>4.0.4'
 gem 'simple_form','~>2.1.0'
 gem 'ancestry','~>2.0.0'
 
+
+#OmniAuth
+gem 'authlogic','~>3.2.0'
+gem 'omniauth','~>1.1.4'
+gem 'omniauth-facebook','~>1.4.1'
+gem 'omniauth-twitter','~>1.0.0'
+gem 'omniauth-linkedin','~>0.1.0'
+gem 'omniauth-openid','~>1.0.1'
+
+#Search Utilities
+gem 'meta_search','~>1.1.3'
+gem 'nokogiri','~>1.5.9'
+gem 'rsolr','~>1.0.9'
+gem 'rsolr-ext','~>1.0.3'
+gem 'hash_struct','~>0.3'
+gem 'ancestry','~>2.0.0'
+gem 'hirb','~>0.7.1'
+gem 'interactive_editor','~>0.0.10'
+
 group :development, :test do
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
